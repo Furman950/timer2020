@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">timer2020</string>
+    <string name="next_break_in">Next break in</string>
+    <string name="timer">Timer</string>
 </resources>
