@@ -2,4 +2,6 @@
     <string name="app_name">timer2020</string>
     <string name="next_break_in">Next break in</string>
     <string name="timer">Timer</string>
+    <string name="channel_description">Notification channel for Timer 2020</string>
+    <string name="channel_name">Timer 2020</string>
 </resources>

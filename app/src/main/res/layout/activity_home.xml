@@ -10,6 +10,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/home_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -18,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="144dp"
-            android:enabled="@{homeViewModel.status}"
+            android:enabled="@{homeViewModel.timerOn}"
             android:onClick="@{() -> homeViewModel.toggle()}"
             android:text="@string/next_break_in"
             android:textSize="24sp"
@@ -31,19 +32,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
-            android:enabled="@{homeViewModel.status}"
-            android:text='This will have the countdown'
+            android:enabled="@{homeViewModel.timerOn}"
+            android:text='@{homeViewModel.countDown}'
+            android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/timerStatusTextView" />
+
+        <NumberPicker
+            android:id="@+id/numberPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="@{homeViewModel.timerOn ? false : true}"
+            android:value="@={homeViewModel.numberPicker}"
+            app:isBusy="@{homeViewModel.isBusy}"
+            app:layout_constraintBottom_toTopOf="@+id/timerSwitch"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timerCountDownTextView" />
 
 
         <Switch
             android:id="@+id/timerSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked='@{homeViewModel.status}'
+            android:checked="@={homeViewModel.timerOn}"
             android:onClick='@{() -> homeViewModel.toggle()}'
             android:text="@string/timer"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -52,4 +66,5 @@
             app:layout_constraintTop_toBottomOf="@+id/timerCountDownTextView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</layout>
+</layout><!--            android:onScrollListener="@{(picker, scrollState) -> homeViewModel.scrollState(scrollState)}"-->
+    <!--            android:onValueChange="@{(picker, oldv, new) -> homeViewModel.numberPickerChange(new)}"-->

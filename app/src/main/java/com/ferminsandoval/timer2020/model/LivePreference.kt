@@ -26,16 +26,17 @@ class LivePreference<T> constructor(
         disposable = updates.filter { t -> t == key }.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeWith(object : DisposableObserver<String>() {
-                override fun onComplete() {}
+                override fun onComplete() {
 
-                override fun onNext(t: String?) {
-                    postValue(preferences.all[t] as T ?: defaultValue)
                 }
 
-                override fun onError(e: Throwable?) {
-                    TODO("Not yet implemented")
+                override fun onNext(t: String) {
+                    postValue((preferences.all[t] as T) ?: defaultValue)
                 }
 
+                override fun onError(e: Throwable) {
+
+                }
             })
     }
 

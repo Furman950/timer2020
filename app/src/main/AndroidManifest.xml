@@ -2,14 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ferminsandoval.timer2020">
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.Blank"></activity>
         <activity android:name=".view.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,6 +21,10 @@
         </activity>
 
         <receiver android:name=".receivers.TimerBroadcastReceiver" />
+        <!--            <receiver android:name=".receivers.TimerBroadcastReceiver">-->
+        <!--                <intent-filter>-->
+        <!--                    <action android:name="com.ferminsandoval.timer2020.alarm" />-->
+        <!--                </intent-filter>-->
+        <!--            </receiver>-->
     </application>
-
 </manifest>

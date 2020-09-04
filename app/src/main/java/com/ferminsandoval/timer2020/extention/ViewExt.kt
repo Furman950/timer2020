@@ -1,7 +1,8 @@
 package com.ferminsandoval.timer2020.extention
 
 import android.view.View
+import com.google.android.material.snackbar.Snackbar
 
 fun View.showSnackBar(message: String, duration: Int){
-    this.showSnackBar(message, duration)
+    Snackbar.make(this, message, duration).show()
 }
